@@ -1,0 +1,29 @@
+﻿@model CustomerFeedbackPortal.Models.Feedback
+
+@{
+    ViewData["Title"] = "Feedback Details";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">
+            <h3>Feedback Details</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Name</dt>
+                <dd class="col-sm-9">@Model.Name</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Model.Email</dd>
+
+                <dt class="col-sm-3">Rating</dt>
+                <dd class="col-sm-9">@Model.Rating</dd>
+
+                <dt class="col-sm-3">Message</dt>
+                <dd class="col-sm-9">@Model.Message</dd>
+            </dl>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

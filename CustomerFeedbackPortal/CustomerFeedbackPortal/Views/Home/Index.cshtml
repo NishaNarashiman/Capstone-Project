@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="welcome-background">
+    <div class="container mt-5">
+        <div class="jumbotron p-5 rounded shadow-sm text-center" style="background-color: rgba(255, 255, 255, 0.85);">
+            <h1 class="display-4 mb-4">Welcome to Customer Feedback Portal</h1>
+            <p class="lead mb-4">
+                This portal allows customers to share their feedback easily.
+                Admins can review and manage all feedback submissions.
+            </p>
+            <a href="@Url.Action("Index", "Feedbacks")" class="btn btn-primary btn-lg">
+                View Feedbacks
+            </a>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Submit Feedback</h5>
+                        <p class="card-text">Share your experience or suggestions by submitting a feedback form.</p>
+                        <a href="@Url.Action("Create", "Feedbacks")" class="btn btn-outline-primary">Give Feedback</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Admin Dashboard</h5>
+                        <p class="card-text">Manage and review all customer feedback in a structured format.</p>
+                        <a href="@Url.Action("Login", "Admin")" class="btn btn-outline-primary">Go to Admin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Learn More</h5>
+                        <p class="card-text">Explore documentation and learn more about how this portal works.</p>
+                        <a href="@Url.Action("About", "Home")" class="btn btn-outline-primary">Documentation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@if (ViewBag.Ratings != null)
+{
+    <h2>Ratings Breakdown</h2>
+    @foreach (var rating in ((Dictionary<int, int>)ViewBag.Ratings).OrderByDescending(r => r.Key))
+    {
+        <div style="margin-bottom: 10px;">
+            <strong>@rating.Key star(s):</strong>
+            <span>@rating.Value feedback(s)</span>
+            <div style="background-color: #4CAF50; width: @(rating.Value * 10)px; height: 20px; display: inline-block; margin-left: 10px;"></div>
+        </div>
+    }
+}

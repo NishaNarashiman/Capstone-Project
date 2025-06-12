@@ -1,0 +1,51 @@
+﻿ @model CustomerFeedbackPortal.Models.Feedback
+
+@{
+    ViewData["Title"] = "Edit Feedback";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-warning text-dark">
+            <h3 class="mb-0">Edit Feedback</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Rating" class="form-label"></label>
+                    <input asp-for="Rating" class="form-control" type="number" min="1" max="5" />
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Message" class="form-label"></label>
+                    <textarea asp-for="Message" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success">Save Changes</button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

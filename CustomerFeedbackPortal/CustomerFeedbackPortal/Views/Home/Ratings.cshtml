@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Ratings Breakdown";
+}
+
+<h2>Customer Feedback Ratings Breakdown</h2>
+
+@if (ViewBag.Ratings != null)
+{
+    @foreach (var rating in ((Dictionary<int, int>)ViewBag.Ratings).OrderByDescending(r => r.Key))
+    {
+        <div style="margin-bottom: 10px;">
+            <strong>@rating.Key star(s):</strong>
+            <span>@rating.Value feedback(s)</span>
+            <div style="background-color: #4CAF50; width: @(rating.Value * 10)px; height: 20px; display: inline-block; margin-left: 10px;"></div>
+        </div>
+    }
+}
+else
+{
+    <p>No feedback ratings available.</p>
+}
